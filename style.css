@@ -1,0 +1,406 @@
+/*Esses parâmetros resetam os espaçamentos do navegador*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #7C0A2D;      /* bordô */
+    --cor-secundaria: #4B0082;    /* roxo escuro */
+    --cor-section: #2E2A34;       /* roxo acinzentado */
+    --cor-fundo: #1e1b22;         /* quase preto */
+    --cor-destaque: #673ae4;      /* roxo vibrante */
+    --cor-acento: #c9a0dc;        /* lavanda */
+    --cor-texto: whitesmoke;         /* texto principal */
+}
+html {
+    scroll-behavior: smooth;
+}
+/* --- Navegação (links do scroll-spy) --- */
+/* (mantém compatibilidade caso você use outro seletor no futuro) */
+.navegacao .nav-link.active {
+    color: var(--cor-texto);
+}
+
+.navegacao a{
+    display:inline-block;
+    margin: 0 19px;
+    padding: 9px 12px;
+    color: var(--cor-fundo);
+    text-decoration:none;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.navegacao a.active{
+    border-color: var(--cor-secundaria);
+    background-color: rgba(201, 160, 220, 0.404);
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+.navegacao a:hover{
+    color: var(--cor-texto);
+}
+
+.navegacao a span{
+    color: var(--cor-texto);
+}
+
+.navegacao a:hover span{
+    color: var(--cor-texto);
+}
+
+.navegacao a:focus-visible{
+    outline: 6px solid var(--cor-fundo);
+    outline-offset: 3px;
+}
+
+/*fundo da página e fonte usada em todos os elementos:*/
+body{
+    font-family: "UnifrakturCook", cursive;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    transition: background-color 0.9s linear;
+    /*O 'transition' suaviza a mudança de cores no 'background-color'*/
+    cursor: none;
+}
+
+#cursor {
+    position: fixed;
+    left: 0; /*Posição inicial X*/
+    top: 0; /*Posição inicial Y*/
+    width: 20px;
+    height: 20px;
+    background-color: var(--cor-texto);
+    border-radius: 50%;
+    pointer-events: none; /*não acontece nada nos cliques*/
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease;
+}
+#cursor-rastro{
+    left: 3px; /*Posição inicial X*/
+    top: 3px; /*Posição inicial Y*/
+    width: 15px;
+    height: 15px;
+    border-radius: 95%;
+    position: fixed;
+    background-color: transparent;
+    pointer-events: none;
+    transition: left 0.16s ease, top 0.16s ease;
+    border: 2px solid var(--cor-acento);
+}
+
+#cursor, #cursor-rastro {
+    z-index: 9999; /* fica na frente de tudo */
+}
+
+.click{
+    scale: 0.9;
+}
+p {
+    line-height: 1.4;
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.subtitulo {
+    font-size: 30px;
+    color: var(--cor-acento);
+    font-family: "Medula One";
+
+    animation: paragrafEntrada 0.9s ease forwards;
+    /*O animation delay seta o delay em segundos da animação*/
+}
+
+h1{
+    font-size: 4rem;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    animation: entrar 0.8s ease forwards;
+}
+h2{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+section{
+    font-size: 19px;
+    font-family: "Medula One", system-ui;
+    font-style: normal;
+    text-align: center;
+
+    background-color: var(--cor-section);
+    box-shadow: 0 10px 40px rgba(26, 26, 26, 0.8);
+    
+
+    clip-path: polygon(0 0, 100% 7%, 100% 85%, 0 100%);
+    margin-bottom: 20px;
+    min-height: 70vh;
+    padding: 100px 60px;
+    display: flex;
+    flex-direction: row; /*Conteúdo em linha 'row'*/
+    align-items: center;
+    gap: 40px;
+
+    z-index: 1; /*Coloca para "trás" esse elemento*/ 
+    justify-content: space-between;
+}
+
+section:nth-child(1) {
+    flex-direction: column; /* empilha texto em cima da imagem */
+    align-items: center;
+}
+
+section:nth-child(1) .section-texto {
+    text-align: center;
+    flex: unset; /* remove o tamanho fixo de 200px */
+    width: 100%;
+}
+
+section:nth-child(1) .section-visual {
+    flex: unset;
+    width: auto;
+}
+
+section:nth-child(2){
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 95%);
+}
+
+.section-visual {
+    flex: 2; /* ocupa o dobro do espaço do texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.section-texto {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pfp-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.imgProject{
+    width: 275px;
+    max-width: 100%; /*Não ultrapassa o container*/
+    border-radius: 16px;
+}
+
+header{
+    text-align: center;
+    font-size: 35px;
+    background-color: var(--cor-secundaria);
+    padding: 2rem;
+    /*Rem unidade relativa ao tamanho da fonte*/
+    /*O padding é o espaçamento interno de um elemento
+    A distância entre o conteúdo e o conteúdo da borda da caixa*/
+        /* 
+    === PADDING — espaçamento interno ===
+    padding: todos os lados
+    padding: cima/baixo  esquerda/direita
+    padding: cima  direita  baixo  esquerda (sentido horário)
+    padding-top / right / bottom / left — lados individuais
+
+    Dica: use rem para tamanhos flexíveis (1rem = 16px por padrão)
+    Diferença: padding = dentro da borda | margin = fora da borda
+    */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    transform: skewY(-3deg);
+    /*transform é uma propriedade que transforma geométricamnete um elementi
+    sem afetar o resto da página. As mais usadas são:
+    skew - inclina
+    rotate autoexplicativo
+    scale n precisso falar tbm né
+    translate*/
+}
+
+header * {
+    transform: skewY(3deg); /* valor oposto cancela o efeito no conteúdo */
+}
+
+/*Em CSS nos usamos o '@keyframe'você define um quadro chave e aplica
+em um elemento*/
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes paragrafEntrada {
+    from{
+        opacity: 0;
+        transform: translate3d(20px, 20px, 30px);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+    
+}
+/*Isso define uma animação chamada "entrar" que começa com opacidade 0
+e a 30 px abaixo da posição original.
+e termina na posição 'normal'*/
+
+main{
+    padding: 35px 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#carrossel-master {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+iframe {
+    display: block;      /* tira do fluxo inline */
+    margin: 0 auto;      /* centraliza */
+    width: 100%;         /* ocupa a largura do card */
+    max-width: 560px;    /* tamanho máximo do player */
+    height: 315px;       /* altura padrão do player YouTube */
+    border-radius: 12px;
+}
+
+
+
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: "Medula One";
+    font-size: 18px;
+    cursor: none;
+}
+
+.card {
+    min-width: 100%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    height: 100%; /* ← ocupa toda a altura do container */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: var(--cor-fundo);
+    opacity: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: var(--cor-destaque);
+    transition: background-color 0.3s ease;
+}
+
+
+footer {
+    text-align: center;
+    padding: 80px 45px;
+    color: var(--cor-texto);
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    /*background: linear-gradient(135deg, #1e1b22 60%, #4B0082 100%);*/
+    background: linear-gradient(135deg, #1e1b22 40%, #2E2A34 70%, #4B0082 100%);
+}
+
+footer h2 {
+    font-size: 4rem;
+    color: var(--cor-texto);
+    letter-spacing: 4px; /* espaçamento entre letras, estilo Persona */
+}
+
+#contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#contatos:hover .btn-contato {
+    transform: skewX(-5deg) translateX(-10px) scale(0.95);
+    opacity: 0.8;
+}
+
+#contatos .btn-contato:hover {
+    transform: skewX(-6deg) translateX(15px) scale(1.05);
+    opacity: 1;
+    border-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    border-left: 8px solid var(--cor-texto);
+}
+
+.btn-contato {
+    display: block;
+    padding: 14px 40px;
+    background-color: var(--cor-fundo);
+    color: whitesmoke;
+    font-family: "Medula One";
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 2px solid var(--cor-secundaria); /* borda roxa por padrão */
+    transform: skewX(-5deg);   /* inclinação estilo Persona */
+    transition: border-color 0.3s ease, color 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.btn-contato .icon {
+    display: inline-block;
+    width: 32px;
+    text-align: center;
+    margin-right: 12px;
+    transform: skewX(5deg); /* cancela a inclinação */
+    transition: color 0.2s ease;
+    color: var(--cor-acento);
+}
+
+.btn-contato .label {
+    display: inline-block;
+    transform: skewX(5deg); /* cancela a inclinação no texto */
+}
+
+
+.btn-contato:hover {
+    border-color: var(--cor-acento);   /* borda muda pra roxo claro */
+    color: var(--cor-acento);           /* texto muda de cor junto */
+    border-left: 6px solid var(--cor-acento); /* destaque na borda esquerda */
+}
+
+.btn-contato:hover .icon{
+    color: var(--cor-texto);
+}
