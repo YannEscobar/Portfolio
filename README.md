@@ -8,7 +8,7 @@
 ├── css/
 │   └── style.css         All styling (theme colors in :root at the top)
 ├── js/
-│   ├── view.js           DOM — rendering, ransom lettering, wipe, cursor,
+│   ├── script.js           DOM — rendering, ransom lettering, wipe, cursor,
 ```
 
 ## 📌 Features
