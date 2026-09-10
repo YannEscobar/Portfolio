@@ -2,12 +2,14 @@
 
 > **Personal portfolio website**
 
----
-
-## ✅ Demo
-Open `index.html` in your browser.
-
----
+## Structure
+```
+├── index.html
+├── css/
+│   └── style.css         All styling (theme colors in :root at the top)
+├── js/
+│   ├── view.js           DOM — rendering, ransom lettering, wipe, cursor,
+```
 
 ## 📌 Features
 - Custom visual identity (colors + typography inspired by persona 5 and goth aesthetics)

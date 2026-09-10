@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Medula+One&family=Pirata+One&family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Medula+One&family=Pirata+One&display=swap');
+
 /*Esses parâmetros resetam os espaçamentos do navegador*/
 * {
     margin: 0;
@@ -100,6 +103,7 @@ body{
 .click{
     scale: 0.9;
 }
+
 p {
     line-height: 1.4;
     font-size: 16px;
@@ -116,6 +120,7 @@ p {
 }
 
 h1{
+    font-family: "UnifrakturCook", cursive;
     font-size: 4rem;
     margin-bottom: 15px;
     margin-top: 10px;
@@ -134,8 +139,6 @@ section{
 
     background-color: var(--cor-section);
     box-shadow: 0 10px 40px rgba(26, 26, 26, 0.8);
-    
-
     clip-path: polygon(0 0, 100% 7%, 100% 85%, 0 100%);
     margin-bottom: 20px;
     min-height: 70vh;
@@ -224,7 +227,7 @@ header{
     flex-direction: column;
 
     transform: skewY(-3deg);
-    /*transform é uma propriedade que transforma geométricamnete um elementi
+    /*transform é uma propriedade que transforma geométricamnete um elemento
     sem afetar o resto da página. As mais usadas são:
     skew - inclina
     rotate autoexplicativo
